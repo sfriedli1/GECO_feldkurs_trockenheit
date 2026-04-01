@@ -16,6 +16,6 @@ title-block-banner: true
 Master students in *Geography* at the University of Bern. 
 
 -------
-This course is taught by Prof. Olivia Romppainen-Martius, Prof. Adrien Mestrot, and Prof. [Benjamin Stocker](https://geco-group.org/author/benjamin-stocker/) and assisted by [Ananda Kurth](https://geco-group.org/author/ananda-kurth/).
+This course is taught by Prof. Olivia Romppainen-Martius, Prof. Adrien Mestrot, and Prof. [Benjamin Stocker](https://geco-group.org/author/benjamin-stocker/).
 
 ![](./images/logo_unibern_squid3.png){width="30%"}
