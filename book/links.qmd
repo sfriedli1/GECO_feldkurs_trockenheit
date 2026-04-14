@@ -1,11 +1,17 @@
-# Links
+# 3 Datenzugang
 
-## MeteoSchweiz Stationsdaten
+## 3.1 MeteoSchweiz Stationsdaten
+
+Die Stationsdaten von Meteo Schweiz können als CSV-Dateien herunter geladen werden. 
+
+Eine Möglichkeit ist es, die Dateien direkt von der Webseite von Meteo Schweiz herunterzuladen. 
 
 [Daten ohne Programmierkenntnisse herunterladen](https://www.meteoschweiz.admin.ch/service-und-publikationen/applikationen/ext/daten-ohne-programmierkenntnisse-herunterladen.html#lang=de&mdt=normal&pgid=&sid=&col=&di=&tr=&hdr=)
 
+Die Dateien können jedoch auch über einen API-Zugang, welcher von Meteo Schweiz zur Verfügung gestellt wird heruntergeladen werden. 
+
 [Daten via API herunterladen](https://opendatadocs.meteoswiss.ch/de/a-data-groundbased/a1-automatic-weather-stations?Datenstruktur=eine-datei-mit-allen-stationen)
 
-## ERA5 climate reanalysis
+## 3.2 ERA5 climate reanalysis
 
 [ERA5 Land hourly time-series data from 1950 to present](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land-timeseries?tab=overview)

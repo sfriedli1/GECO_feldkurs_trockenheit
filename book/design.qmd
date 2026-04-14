@@ -1,14 +1,57 @@
-# Course design
+# 1 Logistik
 
-## Theme and context
+## 1.1 Allgemeine Informationen
+* Leitung: Prof. [Benjamin Stocker](https://geco-group.org/author/benjamin-stocker/); Mitwirkung: Prof. Adrien Mestrot, Prof. Olivia Romppainen-Martius – Geographisches Institut (GIUB), Universität Bern.
 
-Extreme weather requires adaptations in the management of natural resources, including water resources, biodiversity, soil cultivation in agriculture, and planning for climate-smart forestry. Information and near-term predictions of climate impacts are generated through diverse continuous measurements and remote sensing of the atmosphere, hydrological systems, soils, and ecosystems. In combination with extended-range numerical weather prediction, this information can inform planning and interventions on a variety of levels. The recently launched National Drought Platform (https://www.trockenheit.admin.ch) gathers such information and makes it publicly available in a form that satisfies diverse demands by different stakeholders.  
+* Die Unterrichtssprache ist Deutsch und/oder Englisch.
 
-This field course familiarizes students with a multitude of observational system and measurement types, provides hands-on experiences with measurements in the field, and lets students take the perspective and learn about practices and demands by various stakeholders. 
+* Anzahl ECTS: 5 ECTS
 
-## Goal
+* Organisation: Der Kurs findet im Frühjahrssemester 2026 statt. Insgesamt 10 Tage bestehend aus 1-2 Tage Vorbereitung und 8/9 Tage Blockkurs im Juni (08.06.-19.06.2026). Der Blockkurs umfasst eine Reise ins Wallis mit 2 Übernachtungen.
 
-The course consists of a preparatory phase, and a field phase. During the preparatory phase, information on the current (i.e., weeks leading up to the field phase) level of drought, considering a set of relevant Earth system variables, is gathered and interpreted in the context of the climatology (past 30 years), of medium (15 d) to seasonal forecasts, and of climate change projections. 
+* Maximale Teilnehmendenzahl: 30 Studierende.
 
-The field phase consists of visits at several institutions, research sites, and localities that deal with droughts, their impacts, and adaptation. Students will familiarise themselves with the different perspectives from different stakeholders and learn about processes that drive drought impacts in different natural spheres and socio-economic domains. 
+* Zielgruppe: Masterstudierende der Geographie (Teilnahme auf Bachelorstufe ausgeschlossen).
+
+* Leistungsnachweis: Präsentation und Bericht
+
+## 1.2 Thema und Kontext
+
+Extreme Wetterereignisse erfordern Anpassungen im Management natürlicher Ressourcen, einschließlich Wasserressourcen, Biodiversität, Bodenbewirtschaftung in der Landwirtschaft sowie der Planung einer klimafitten Forstwirtschaft. Informationen sowie kurzfristige Vorhersagen zu Klimaauswirkungen werden durch vielfältige kontinuierliche Messungen und Fernerkundung der Atmosphäre, hydrologischer Systeme, Böden und Ökosysteme gewonnen. In Kombination mit numerischen Wettervorhersagen über einen erweiterten Zeitraum können diese Informationen Planungsprozesse und Maßnahmen auf unterschiedlichen Ebenen unterstützen.
+
+Die kürzlich lancierte Nationale Dürreplattform (https://www.trockenheit.admin.ch) bündelt diese Informationen und stellt sie öffentlich in einer Form bereit, die den unterschiedlichen Anforderungen verschiedener Anspruchsgruppen gerecht wird.
+
+Dieser Feldkurs macht die Studierenden mit einer Vielzahl von Beobachtungssystemen und Messmethoden vertraut, bietet praktische Erfahrungen im Feld und ermöglicht es den Studierenden, die Perspektiven verschiedener Anspruchsgruppen einzunehmen sowie deren Praktiken und Anforderungen kennenzulernen.
+
+## 1.3 Kursaufbau
+
+Der Kurs besteht aus einer Vorbereitungsphase und einer Feldphase. Während der Vorbereitungsphase werden Informationen über den aktuellen Dürrezustand (d.h. in den Wochen vor der Feldphase) unter Berücksichtigung relevanter Erdsystemvariablen erhoben und im Kontext der Klimatologie der letzten 30 Jahre, mittelfristiger (ca. 15 Tage) bis saisonaler Vorhersagen sowie von Klimawandelprojektionen interpretiert.
+
+Die Feldphase umfasst Besuche bei verschiedenen Institutionen, Forschungsstandorten und Orten, die sich mit Dürren, deren Auswirkungen und Anpassungsmaßnahmen befassen. Die Studierenden machen sich mit den unterschiedlichen Perspektiven verschiedener Anspruchsgruppen vertraut und lernen die Prozesse kennen, die Dürrefolgen in unterschiedlichen natürlichen Sphären sowie in sozioökonomischen Bereichen bestimmen.
+
+* Der Kurs wird in 4 Gruppen zu je 5 Studierenden durchgeführt.
+
+* Jede Gruppe bearbeitet 3–4 Regionen, z.B.:
+
+  * Basel
+  * Bern–Fribourg
+  * Wallis
+  * Tessin
+
+* Jede Gruppe arbeitet mit mindestens drei verschiedenen Datentypen, z.B.:
+
+  * Niederschlag (MeteoSchweiz-Stationen)
+    - Einfache Berechnungen: gleitender Mittelwert über X Tage
+    - SPI (Standardized Precipitation Index)
+    
+  * Abfluss (https://lindas.admin.ch/?lang=en )
+  * NDVI (MODIS, Beispielzugang)
+  * Bodenfeuchte (ERA5 oder Stationsdaten)
+  * Grundwasser (https://www.hydrodaten.admin.ch/)
+  * TreeNet (https://treenet.info/)
+  
+* Der Zugang und das Herunterladen der Daten auf der folgenden Seite erklärt und demonstiert (hier dann Link einfügen auf die Data Seite)
+
+* Vorbereitung auf die Feldphase: Jede Gruppe erstellt Fragen für 1–2 Exkursionsbesuche – ein Set an Fragen, das den jeweiligen Stakeholdern vor Ort gestellt wird,
+
 

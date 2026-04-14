@@ -2,20 +2,20 @@
 title-block-banner: true
 ---
 
-# About this course {.unnumbered}
+# Über diesen Kurs {.unnumbered}
 
-## Learning objectives
+## Lernziele
 
-- The students are familiar with the different types of droughts that affect Switzerland (hydrological, meteorological, and agricultural). 
-- The students know how droughts are monitored both *in-situ* and using remote sensing and meteorological observations and know how to analyse drought monitoring data.
-- The students know about the impacts of droughts on agriculture and forests in Switzerland.
-- The students are familiar with drought adaptation strategies for various sectors in Switzerland.
+- Die Studierenden sind mit den verschiedenen Dürretypen vertraut, die die Schweiz betreffen (hydrologische, meteorologische und landwirtschaftliche Dürre)
+- Die Studierenden verstehen, wie Dürren sowohl *in situ* als auch mithilfe von Fernerkundung und meteorologischen Beobachtungen überwacht werden, und sind in der Lage, entsprechende Monitoringdaten zu analysieren.
+- Die Studierenden kennen die Auswirkungen von Dürren auf Landwirtschaft und Wälder in der Schweiz.
+- Die Studierenden sind mit Anpassungsstrategien an Dürre für verschiedene Sektoren in der Schweiz vertraut.
 
-## Target audience and prerequisites
+## Zielgruppe und Voraussetzungen
 
-Master students in *Geography* at the University of Bern. 
+Masterstudierende der *Geografie* an der Universität Bern. 
 
 -------
-This course is taught by Prof. Olivia Romppainen-Martius, Prof. Adrien Mestrot, and Prof. [Benjamin Stocker](https://geco-group.org/author/benjamin-stocker/).
+Dieser Kurs wird unterrichtet von Prof. Olivia Romppainen-Martius, Prof. Adrien Mestrot, und Prof. [Benjamin Stocker](https://geco-group.org/author/benjamin-stocker/).
 
 ![](./images/logo_unibern_squid3.png){width="30%"}

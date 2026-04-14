@@ -1,25 +1,26 @@
-# Course plan
+# 2 Kursplan
 
-## Preparatory phase
-### Afternoon session 1 (20.04.2026)
+## 2.1 Vorbereitungsphase
 
-- Course logistics, programme, learning objectives 
-- Introduction to summer droughts in Switzerland, drought monitoring 
-- Identification of essential variables 
-- Starting points for data download, analysis, and interpretation. Analysis should put current state into a multi-year reference 
-- Approach to collecting stakeholder perspectives, guiding field visits 
+### 2.1.1 Nachmittagssession 1 (20.04.2026)
 
-### Afternoon session 2 (11.05.2026)
+* Kursorganisation, Programm und Lernziele
+* Einführung in Sommertrockenheit in der Schweiz und Dürremonitoring
+* Identifikation relevanter Schlüsselvariablen
+* Einstieg in Datenzugang, -analyse und -interpretation; Einordnung des aktuellen Zustands in einen mehrjährigen Referenzzeitraum
+* Vorgehen zur Erhebung von Stakeholder-Perspektiven und Vorbereitung der Exkursionsbesuche
 
-- Support for data download, analysis, and interpretation 
-- Consolidate questions stakeholders to a common set 
-- Preparation/guidance for presentation (structure) 
+### 2.1.2 Nachmittagssession 2 (11.05.2026)
 
-## Field phase
+* Unterstützung beim Datenzugang, bei der Analyse und Interpretation
+* Konsolidierung der Fragen an Stakeholder zu einem gemeinsamen Fragenkatalog
+* Vorbereitung und Anleitung für Präsentationen (Struktur und Aufbau)
 
-| Date      | Day | Morning                                             | Afternoon                                      |
+## 2.2 Feldphase
+
+| Datum     | Tag | Morgen                                              | Nachmittag                                     |
 |-----------|-----|-----------------------------------------------------|------------------------------------------------|
-| 8.6.      | Mo  | Presentation and discussion<br>Weather outlook       | Stadt Bern (Rundgang)                          |
+| 8.6.      | Mo  | Presentation and discussion<br>Weather outlook      | Stadt Bern (Rundgang)                          |
 | 9.6.      | Di  | Swisstopo                                           | BAFU                                           |
 | 10.6.     | Mi  | DOK Trial Therwil                                   | DOK Trial Therwil                              |
 | 11.6.     | Do  | Kanton Freiburg                                     | MeteoSuisse, Payerne                           |
