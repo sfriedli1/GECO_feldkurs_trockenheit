@@ -1,11 +1,286 @@
-# Links
+# 3 Datenzugang
 
-## MeteoSchweiz Stationsdaten
+# 3 Datenzugang
+
+Für die Analyse von Dürreereignissen und klimatischen Veränderungen stehen verschiedene Datensätze aus unterschiedlichen Quellen zur Verfügung. Diese umfassen sowohl in-situ Messdaten (z. B. meteorologische und hydrologische Stationsdaten) als auch Fernerkundungs- und Reanalysedaten. Die folgenden Abschnitte geben einen Überblick über zentrale Datenquellen sowie deren Zugangsmöglichkeiten. Dabei werden sowohl manuelle Download-Optionen als auch automatisierte Zugänge über Programmierschnittstellen (APIs) vorgestellt.
+
+## 3.1 MeteoSchweiz Stationsdaten
+
+MeteoSchweiz stellt umfangreiche meteorologische Stationsdaten zur Verfügung, die für die Analyse klimatischer Bedingungen und deren zeitlicher Entwicklung genutzt werden können. Der Zugang zu diesen Daten erfolgt sowohl über manuelle Downloads als auch über eine API, die eine automatisierte Datenabfrage ermöglicht.
+
+Unter dem folgenden Link können die relevanten Metainformationen zu den Stationsdaten heruntergeladen werden. Besonders relevant sind hier die Dateien `Metadaten der Stationen` und `Metadaten der Parameter`.
+
+[Metainformationen herunterladen](https://opendata.swiss/de/dataset/automatische-wetterstationen-messwerte)
+ 
+**Manueller Zugang zu Meteo Schweiz Daten**
+
+Der folgende Link führt direkt zur Webseite von Meteo Schweiz, dort kann die Station und Zeitraum ausgewählt werden und dann die entsprechend CSV-Datei heruntergeladen werden. 
 
 [Daten ohne Programmierkenntnisse herunterladen](https://www.meteoschweiz.admin.ch/service-und-publikationen/applikationen/ext/daten-ohne-programmierkenntnisse-herunterladen.html#lang=de&mdt=normal&pgid=&sid=&col=&di=&tr=&hdr=)
 
+**Zugang über API von Meteo Schweiz**
+
+Die Dateien können jedoch auch über einen API-Zugang, welcher von Meteo Schweiz zur Verfügung gestellt wird heruntergeladen werden. 
+
+Das folgende Skript demonstriert, wie man die täglichen Daten der Station Bern-Zollikofen seit Messbeginn in `R` herunterladen kann.
+
+```{R}
+library(purrr)
+library(lubridate)
+library(dplyr)
+library(readr)
+library(ggplot2)
+
+# create a folder to store the csv-files
+dir.create("data_raw", showWarnings = FALSE, recursive = TRUE)
+
+# Url's of daily station data
+station_urls <- c(
+  "Bern/Zollikofen hist" = "https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ber/ogd-smn_ber_d_historical.csv", # data since start of recordings until the end of last year
+  "Bern/Zollikofen rec"  = "https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ber/ogd-smn_ber_d_recent.csv" # data since the start of this year until yesterday
+)
+
+# a loop to iterate through every url in the station_urls and download the respective csv-files
+iwalk(
+  station_urls,
+  ~ {
+    station_name <- .y
+    url <- .x
+    
+    safe_name <- gsub("[/ ]", "_", station_name)
+    destfile <- file.path("data_raw", paste0(safe_name, "_daily.csv"))
+    
+    message("Load ", station_name, " von ", url)
+    download.file(url, destfile = destfile, mode = "wb")
+  }
+)
+
+# read in csv-file into data frame
+files <- list.files("data_raw", pattern = "\\.csv$", full.names = TRUE)
+
+df_daily <- map_dfr(
+  files,
+  ~ read_csv2(
+    .x,
+    show_col_types = FALSE,
+    col_types = cols(.default = col_character())
+  )
+) %>%
+  mutate(
+    reference_timestamp = dmy_hm(reference_timestamp),
+    tre200d0 = as.numeric(tre200d0)
+  )
+
+# plot time series of daily mean temperature
+ggplot(df_daily, aes(x = reference_timestamp, y = tre200d0))+
+  geom_line()+
+  labs(
+    x = "Date",
+    y = "Daily mean temperature"
+  )+
+  theme_minimal()
+```
+
+Das folgende Skript demonstiert, wie man die täglichen Daten der Station Bern-Zollikofen seit Messbeginn in `Python` herunterladen kann.
+
+```{python}
+import os
+from pathlib import Path
+from urllib.request import urlretrieve
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# create a folder to store the csv-files
+data_dir = Path("../data_raw")
+data_dir.mkdir(parents=True, exist_ok=True)
+
+# Url's of daily station data
+station_urls = {
+    "Bern_Zollikofen_hist": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ber/ogd-smn_ber_d_historical.csv", # data since start of recordings until the end of last year
+    "Bern_Zollikofen_rec":  "https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ber/ogd-smn_ber_d_recent.csv", # data since the start of this year until yesterday
+}
+
+# a loop to iterate through every url in the station_urls and download the respective csv-files
+for station_name, url in station_urls.items():
+    destfile = data_dir / f"{station_name}_daily.csv"
+    print(f"Lade {station_name} von {url}")
+    urlretrieve(url, destfile)
+    
+# read in all csv-files from the folder
+files = sorted(data_dir.glob("*.csv"))
+
+df_daily = pd.concat(
+    [pd.read_csv(file, sep=";") for file in files],
+    ignore_index=True
+)
+
+# convert timestamp column
+df_daily["reference_timestamp"] = pd.to_datetime(
+    df_daily["reference_timestamp"].astype(str).str.strip(),
+    format="%d.%m.%Y %H:%M",
+    errors="coerce"
+)
+
+# convert daily mean temperature to numeric
+df_daily["tre200d0"] = pd.to_numeric(df_daily["tre200d0"], errors="coerce")
+
+# plot time series of daily mean temperature
+plt.figure(figsize=(12, 5))
+plt.plot(df_daily["reference_timestamp"], df_daily["tre200d0"])
+plt.xlabel("Date")
+plt.ylabel("Daily mean temperature")
+plt.title("Daily mean temperature at Bern-Zollikofen")
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+
+Die detaillierte Dokumentation zum Datenzugang über die API ist hier verfügbar:
+
 [Daten via API herunterladen](https://opendatadocs.meteoswiss.ch/de/a-data-groundbased/a1-automatic-weather-stations?Datenstruktur=eine-datei-mit-allen-stationen)
 
-## ERA5 climate reanalysis
+## 3.2 Abfluss- und Wasserstandsdaten von BAFU
+
+Neben meteorologischen Daten sind hydrologische Messgrössen wie Abfluss und Wasserstand zentral für die Analyse von Dürreereignissen. Diese Daten werden vom Bundesamt für Umwelt (BAFU) bereitgestellt und können über eine interaktive Webplattform eingesehen werden. Die zugehörige Webplattform ermöglicht die Analyse der aktuellen hydrologischen Situation sowie die Nachverfolgung der Entwicklung der Flusspegel seit Jahresbeginn. Ergänzend dazu werden vertiefende Informationen zur Niedrigwasserstatistik sowie verschiedene Visualisierungen zur Verfügung gestellt.
+
+[Hydrologische Daten BAFU](https://www.hydrodaten.admin.ch/de/seen-und-fluesse/messstationen-zustand)
+
+## 3.3 MODIS NDVI Daten
+
+MODIS stellt globale NDVI Daten zur Verfügung. Mit dem R-Package `MODISTools` können diese Daten für beliebige Standorte in R selbst heruntergeladen werden. Das folgende Skript demonstriert das herunterladen von NDVI-Daten mithilfe von MOODISTOOLS im Umkreis der Station Bern/Zollikofen.
+
+```{R}
+library(MODISTools)
+library(dplyr)
+library(here)
+library(readr)
+
+# 1) Table with the coordinates for each station
+stations <- tibble::tribble(
+  ~site_name, ~lat, ~lon,
+  "BER", 46.990744, 7.464061  # cooridantes of a station are in the file ogd-smn_meta_stations.csv
+)
+
+# 2) Function for extracting the data for each station
+download_one_station <- function(site, lat, lon,
+                                 start = "2001-01-01",
+                                 end   = "2025-12-31") {
+  message("=== Station ", site, " (", start, " - ", end, ") ===")
+  
+  # create file
+  out_file <- here::here(
+    "data_raw",
+    paste0("MOD13Q1_NDVI_", site, "_", start, "_", end, ".csv")
+  )
+  
+  # skip if file already existsts
+  if (file.exists(out_file)) {
+    message("   -> File exists already ", out_file)
+    return(invisible(NULL))
+  }
+  
+  # Try download for the station
+  res <- try(
+    mt_subset(
+      product = "MOD13Q1",
+      band    = "250m_16_days_NDVI",
+      lat     = lat,
+      lon     = lon,
+      start   = start,
+      end     = end,
+      km_lr   = 1,  # radius of 1km around the station
+      km_ab   = 1,
+      site_name = site,
+      internal  = TRUE,   # return data frame
+      progress  = TRUE
+    ),
+    silent = TRUE
+  )
+  
+  # Error handling
+  if (inherits(res, "try-error") || is.null(res) || nrow(res) == 0) {
+    message("Error or empty result at ", site)
+    return(invisible(NULL))
+  }
+  
+  # save CSV
+  write_csv(res, out_file)
+  message("saved: ", out_file)
+  
+  # little break to relax server
+  Sys.sleep(1)
+  
+  invisible(NULL)
+}
+
+# 3) Loop over all stations
+for (i in seq_len(nrow(stations))) {
+  download_one_station(
+    site = stations$site_name[i],
+    lat  = stations$lat[i],
+    lon  = stations$lon[i],
+    start = "2001-01-01",
+    end   = "2025-12-31"
+  )
+}
+```
+
+## 3.4 ERA5 climate reanalysis
+
+ECMWF stellt mit dem Datensatz  ERA5 climate reanalyis stündliche Daten für eine Vielzahl von Klimaparametern zur Verfügung, beispielsweise auch Daten zur Bodenfeuchtigkeit. Der Datensatz mit dem folgenden Link als CSV-Datei heruntergeladen werden.
 
 [ERA5 Land hourly time-series data from 1950 to present](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land-timeseries?tab=overview)
+
+## 3.5 Meteo Schweiz Klima 2025 Datensatz
+
+Neben beobachteten Daten spielen Klimaszenarien eine zentrale Rolle für die Einschätzung zukünftiger Entwicklungen. Meteo Schweiz stellt mit Klima 2025 einen Datensatz zur Verfügung, der für eine Vielzahl an Stationen, Parameter und globalen Erwärmungsniveaus (GWL) Vorhersagen enthält. Unter dem folgenden Link kann eine beliebige Station ausgewählt werden. Hat man die Station ausgewählt kann man dann für jeden Parameter und jedes globale Erwärmungsniveau die entsprechende CSV-Datei herunterladen. Zusätzlich gibt es immer auch noch eine CSV-Datei mit den Daten für die Referenzperiode 1991-2020. 
+
+Für die Metadaten aller vefügbaren Stationen und die Metainformationen zu den vefügbaren Parametern empfiehlt es sich die beiden CSV-Dateien `ogd-climate-scenarios-ch-2025_meta_stations.csv` und `ogd-climate-scenarios-ch-2025_meta_parameters.csv` herunterzuladen.
+
+[Klima 2025 Datensatz](https://data.geo.admin.ch/browser/#/collections/ch.meteoschweiz.ogd-climate-scenarios-ch2025?.language=en)
+
+**Automatisiertes Herunterladen der Daten**
+
+Das Herunterladen der Daten kann auch automatisiert werden. Im folgenden ein R-Skript werden für die Station Bern/Zollikofen die Durchschnittstemperatur und die täglichen Niederschlagssummen für alle drei globalen Erwärmungsniveaus und für die Referenzperiode heruntergeladen.
+
+```{R}
+library(purrr)
+
+# create folder
+dir.create("data_raw/ch2025", recursive = TRUE, showWarnings = FALSE)
+
+# Base components of the url used for the download
+base_url <- "https://rgw.cscs.ch/mchogd:cscs.meteoswiss.ogd.climate/ogd-climate-scenarios-ch2025"
+station  <- "ber"
+
+parameters <- c("tas", "pr")
+scenarios  <- c("gwl1.5", "gwl2.0", "gwl2.5", "gwl3.0", "ref91-20")
+
+# create a table with the complete urls for all combinations of station, parameter and scenario
+download_table <- expand_grid(
+  parameter = parameters,
+  scenario  = scenarios
+) %>%
+  mutate(
+    file_name = paste0(
+      "ogd-climate-scenarios-ch2025_",
+      station, "_", parameter, "_", scenario, ".csv"
+    ),
+    url = paste(base_url, station, file_name, sep = "/")
+  )
+
+walk2(
+  download_table$url,
+  download_table$file_name,
+  ~ {
+    destfile <- file.path("data_raw/ch2025", .y)
+    message("Lade ", .y)
+    download.file(.x, destfile = destfile, mode = "wb")
+  }
+)
+```
+
+
+
+
