@@ -1,4 +1,4 @@
-# Datenzugang {#sec-data}
+# Datenzugang und Links {#sec-data}
 
 Für die Analyse von Dürreereignissen und klimatischen Veränderungen stehen verschiedene Datensätze aus unterschiedlichen Quellen zur Verfügung. Diese umfassen sowohl in-situ Messdaten (z. B. meteorologische und hydrologische Stationsdaten) als auch Fernerkundungs- und Reanalysedaten. Die folgenden Abschnitte geben einen Überblick über zentrale Datenquellen sowie deren Zugangsmöglichkeiten. Dabei werden sowohl manuelle Download-Optionen als auch automatisierte Zugänge über Programmierschnittstellen (APIs) vorgestellt.
 
@@ -286,6 +286,17 @@ walk2(
   }
 )
 ```
+
+## Links
+
+- [NCCS](https://www.nccs.admin.ch/nccs/de/home/massnahmen/pak/pilotprogramm-anpassung-an-den-klimawandel2.html)
+  - [NCCS Schweizer Hydroszenarien](https://www.nccs.admin.ch/nccs/de/home/klimawandel-und-auswirkungen/schweizer-hydroszenarien.html)
+  - [NCCS Waldwirtschaft](https://www.nccs.admin.ch/nccs/de/home/sektoren/waldwirtschaft.html)
+  - [NCCS Landwirtschaft](https://www.nccs.admin.ch/nccs/de/home/sektoren/landwirtschaft.html)
+  - [NCCS Wasserwirtschaft](https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft.html)
+- [BAFU Trockenheitsplattform](https://www.trockenheit.admin.ch/en)
+- [Wasserentnahme bei Trockenheit, Kanton Bern](https://www.bvd.be.ch/de/start/themen/wasser/wassernutzung/wasserentnahmen-bei-trockenheit.html)
+- [CH2025 Klimaszenarien](https://www.nccs.admin.ch/nccs/en/home/climate-change-and-impacts/schweizer-klimaszenarien-ch2025.html)
 
 
 
