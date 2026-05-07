@@ -32,6 +32,7 @@ jobs:
         run: sudo apt-get install libgdal-dev libproj-dev libgeos-dev libudunits2-dev netcdf-bin
       
       - name: Install dependencies
+        working-directory: ./book
         run: |
           install.packages("renv")
           renv::restore()

@@ -22,9 +22,6 @@ Die Dateien können jedoch auch über einen API-Zugang, welcher von Meteo Schwei
 
 Das folgende Skript demonstriert, wie man die täglichen Daten der Station Bern-Zollikofen seit Messbeginn in `R` herunterladen kann.
 
-```{r}
-#| eval: false
-
 library(purrr)
 library(lubridate)
 library(dplyr)
@@ -85,7 +82,6 @@ Das folgende Skript demonstiert, wie man die täglichen Daten der Station Bern-Z
 
 ```{python}
 #| eval: false
-
 import os
 from pathlib import Path
 from urllib.request import urlretrieve
@@ -142,7 +138,7 @@ Die detaillierte Dokumentation zum Datenzugang über die API ist hier verfügbar
 
 [Daten via API herunterladen](https://opendatadocs.meteoswiss.ch/de/a-data-groundbased/a1-automatic-weather-stations?Datenstruktur=eine-datei-mit-allen-stationen)
 
-## 3.2 Abfluss- und Wasserstandsdaten von BAFU
+## Abfluss- und Wasserstandsdaten von BAFU
 
 Neben meteorologischen Daten sind hydrologische Messgrössen wie Abfluss und Wasserstand zentral für die Analyse von Dürreereignissen. Diese Daten werden vom Bundesamt für Umwelt (BAFU) bereitgestellt und können über eine interaktive Webplattform eingesehen werden. Die zugehörige Webplattform ermöglicht die Analyse der aktuellen hydrologischen Situation sowie die Nachverfolgung der Entwicklung der Flusspegel seit Jahresbeginn. Ergänzend dazu werden vertiefende Informationen zur Niedrigwasserstatistik sowie verschiedene Visualisierungen zur Verfügung gestellt.
 
